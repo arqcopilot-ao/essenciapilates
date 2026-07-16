@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essência Pilates - Sistema Interno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" crossorigin src="/assets/index-CHcZgGUW.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CTg2pcjv.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- LOGIN PAGE                                  -->
+    <!-- ============================================ -->
+    <div class="login-page" id="login-page">
+        <div class="login-card">
+            <div class="logo">E</div>
+            <h1>Essência Pilates</h1>
+            <p class="subtitle">Sistema Interno de Gestão</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+                    <input type="password" id="login-password" placeholder="Sua senha" required>
+                </div>
+                <p class="error-msg" id="login-error"></p>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+            <p style="margin-top:16px;font-size:12px;color:var(--color-gray-400)">
+                Acesso inicial: admin@essencia.com / admin123
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- APP LAYOUT                                  -->
+    <!-- ============================================ -->
+    <div class="app-layout" id="app-layout" style="display:none">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <div class="logo">E</div>
+                    <div class="brand-text">Essência <span>Pilates</span></div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-label">Principal</span>
+                    <a class="nav-item active" data-page="dashboard">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                        Dashboard
+                    </a>
+                    <a class="nav-item" data-page="pacientes">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        Pacientes
+                    </a>
+                    <a class="nav-item" data-page="agenda">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+                        Agenda
+                    </a>
+                    <a class="nav-item" data-page="presenca">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Presença
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-label">Financeiro</span>
+                    <a class="nav-item" data-page="financeiro">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                        Financeiro
+                    </a>
+                    <a class="nav-item" data-page="notas">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                        Notas Fiscais
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-label">Sistema</span>
+                    <a class="nav-item" data-page="usuarios">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        Usuários
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar">A</div>
+                    <div class="user-info">
+                        <div class="name">Admin</div>
+                        <div class="role">Administrador</div>
+                    </div>
+                    <button class="btn-logout" id="btn-logout" title="Sair">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+            <header class="main-header">
+                <h2 id="header-title">Dashboard</h2>
+                <div class="header-actions">
+                    <span style="font-size:13px;color:var(--color-gray-400)" id="header-date"></span>
+                    <div class="data-bar">
+                        <button class="btn btn-sm btn-secondary" id="btn-export-data" title="Exportar dados">Exportar</button>
+                        <button class="btn btn-sm btn-secondary" id="btn-import-data" title="Importar dados">Importar</button>
+                        <input type="file" id="import-file-input" accept=".json" style="display:none">
+                    </div>
+                    <button class="btn btn-sm btn-secondary btn-icon" id="btn-theme-toggle" title="Alternar tema">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+                    </button>
+                </div>
+            </header>
+
+            <div class="main-body">
+
+                <!-- ===================== DASHBOARD ===================== -->
+                <div class="page active" id="page-dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                            </div>
+                            <div class="stat-info">
+                                <div class="label">Pacientes Ativos</div>
+                                <div class="value" id="stat-pacientes">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                            </div>
+                            <div class="stat-info">
+                                <div class="label">Receita do Mês</div>
+                                <div class="value" id="stat-receita">R$ 0,00</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                            </div>
+                            <div class="stat-info">
+                                <div class="label">Sessões Hoje</div>
+                                <div class="value" id="stat-sessoes">0</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon teal">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                            </div>
+                            <div class="stat-info">
+                                <div class="label">Pagamentos Próximos</div>
+                                <div class="value" id="stat-pagamentos">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="dashboard-alerts"></div>
+
+                    <div class="dashboard-main-grid">
+                        <div class="card dashboard-calendar-card">
+                            <div class="card-header">
+                                <div style="display:flex;align-items:center;gap:12px">
+                                    <button class="btn btn-sm btn-secondary" onclick="window.dashboardModule.calendarPrev()">←</button>
+                                    <h3 id="dashboard-calendar-title" style="min-width:160px;text-align:center;font-size:15px"></h3>
+                                    <button class="btn btn-sm btn-secondary" onclick="window.dashboardModule.calendarNext()">→</button>
+                                </div>
+                                <button class="btn btn-sm btn-secondary" onclick="window.dashboardModule.calendarToday()">Hoje</button>
+                            </div>
+                            <div id="dashboard-calendar" class="mini-calendar"></div>
+                        </div>
+
+                        <div class="card dashboard-schedule-card">
+                            <div class="card-header">
+                                <h3>Atendimentos de Hoje</h3>
+                                <span id="dashboard-schedule-count" class="badge badge-info">0</span>
+                            </div>
+                            <div id="dashboard-schedule" class="schedule-list"></div>
+                        </div>
+                    </div>
+
+                    <div class="charts-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Pacientes por Mês</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="chart-pacientes"></canvas>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Financeiro</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="chart-financeiro"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== PACIENTES ===================== -->
+                <div class="page" id="page-pacientes">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Lista de Pacientes</h3>
+                                <span style="font-size:13px;color:var(--color-gray-400)" id="pacientes-count">0 ativos / 0 total</span>
+                            </div>
+                            <div style="display:flex;gap:10px;align-items:center">
+                                <input type="text" id="pacientes-search" placeholder="Buscar paciente..." style="padding:8px 14px;border:1.5px solid var(--color-gray-200);border-radius:var(--radius-full);font-size:14px;width:240px">
+                                <button class="btn btn-primary" onclick="window.pacientesModule.openModal()">+ Novo Paciente</button>
+                            </div>
+                        </div>
+                        <div id="pacientes-cards" class="patient-cards-grid"></div>
+                        <div id="pacientes-pagination" class="pagination"></div>
+                    </div>
+                </div>
+
+                <!-- ===================== FINANCEIRO ===================== -->
+                <div class="page" id="page-financeiro">
+                    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
+                        <div class="stat-card">
+                            <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+                            <div class="stat-info"><div class="label">Receitas</div><div class="value" id="fin-receitas">R$ 0,00</div></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+                            <div class="stat-info"><div class="label">Despesas</div><div class="value" id="fin-despesas">R$ 0,00</div></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg></div>
+                            <div class="stat-info"><div class="label">Saldo</div><div class="value" id="fin-balance">R$ 0,00</div></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon teal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></div>
+                            <div class="stat-info"><div class="label">Pendentes</div><div class="value" id="fin-pendentes">R$ 0,00</div></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Lançamentos</h3>
+                            <button class="btn btn-primary" onclick="window.financeiroModule.openModal()">+ Novo Lançamento</button>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Data</th><th>Tipo</th><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Status</th><th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="financeiro-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== NOTAS FISCAIS ===================== -->
+                <div class="page" id="page-notas">
+                    <div class="card" style="margin-bottom:16px">
+                        <div class="alert alert-info" style="background:#E8F4FD;color:#0066CC;border-color:#B3D9F2">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                            Emissão de NF-e pronta para integração com SEFAZ de São Pedro da Aldeia/RJ. Para ativar, configure as credenciais da prefeitura no módulo de integração.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Notas Fiscais Emitidas</h3>
+                            <button class="btn btn-primary" onclick="window.notasModule.openModal()">+ Emitir NF-e</button>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Número</th><th>Série</th><th>Emissão</th><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Status</th><th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="notas-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== AGENDA ===================== -->
+                <div class="page" id="page-agenda">
+                    <div class="card">
+                        <div class="card-header">
+                            <div style="display:flex;align-items:center;gap:12px">
+                                <button class="btn btn-sm btn-secondary" onclick="window.agendaModule.navigate(-1)">← Anterior</button>
+                                <h3 id="agenda-periodo" style="min-width:240px;text-align:center"></h3>
+                                <button class="btn btn-sm btn-secondary" onclick="window.agendaModule.navigate(1)">Próximo →</button>
+                            </div>
+                            <button class="btn btn-primary" onclick="window.agendaModule.openModal()">+ Novo Agendamento</button>
+                        </div>
+                        <div class="table-wrapper">
+                            <div id="agenda-grid"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== PRESENÇA ===================== -->
+                <div class="page" id="page-presenca">
+                    <div class="stats-grid" style="grid-template-columns:repeat(3,1fr)">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
+                            <div class="stat-info"><div class="label">Total Agendados</div><div class="value" id="presenca-total">0</div></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                            <div class="stat-info"><div class="label">Presentes</div><div class="value" id="presenca-presentes">0</div></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+                            <div class="stat-info"><div class="label">Ausentes</div><div class="value" id="presenca-ausentes">0</div></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div style="display:flex;align-items:center;gap:12px">
+                                <button class="btn btn-sm btn-secondary" onclick="window.presencaModule.changeDate(-1)">←</button>
+                                <input type="date" id="presenca-data" style="padding:8px 14px;border:1.5px solid var(--color-gray-200);border-radius:var(--radius-md);font-size:14px">
+                                <button class="btn btn-sm btn-secondary" onclick="window.presencaModule.changeDate(1)">→</button>
+                            </div>
+                            <h3>Controle de Presença</h3>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr><th>Hora</th><th>Paciente</th><th>Tipo</th><th>Ação</th><th>Status</th></tr>
+                                </thead>
+                                <tbody id="presenca-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== USUÁRIOS ===================== -->
+                <div class="page" id="page-usuarios">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Usuários do Sistema</h3>
+                            <button class="btn btn-primary" onclick="window.usuariosModule.openModal()">+ Novo Usuário</button>
+                        </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr><th>Nome</th><th>E-mail</th><th>Cargo</th><th>Status</th><th>Cadastro</th><th>Ações</th></tr>
+                                </thead>
+                                <tbody id="usuarios-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MODALS                                       -->
+    <!-- ============================================ -->
+
+    <!-- Modal: Paciente -->
+    <div class="modal-overlay" id="modal-paciente">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-paciente-title">Novo Paciente</h3>
+                <button class="modal-close" onclick="closeModal('modal-paciente')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="paciente-form">
+                    <input type="hidden" id="paciente-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nome Completo *</label>
+                            <input type="text" id="paciente-nome" required placeholder="Nome do paciente">
+                        </div>
+                        <div class="form-group">
+                            <label>CPF</label>
+                            <input type="text" id="paciente-cpf" placeholder="000.000.000-00">
+                        </div>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>RG</label>
+                            <input type="text" id="paciente-rg" placeholder="RG">
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Nascimento</label>
+                            <input type="date" id="paciente-nascimento">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone *</label>
+                            <input type="tel" id="paciente-telefone" required placeholder="(00) 00000-0000">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="email" id="paciente-email" placeholder="paciente@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Profissional Responsável</label>
+                            <select id="paciente-profissional">
+                                <option value="">Selecione</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Endereço</label>
+                            <input type="text" id="paciente-endereco" placeholder="Rua, número, bairro">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="paciente-status">
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Observações</label>
+                        <textarea id="paciente-obs" placeholder="Anotações sobre o paciente..."></textarea>
+                    </div>
+                    <div class="modal-footer" style="padding:0">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-paciente')">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Histórico do Paciente -->
+    <div class="modal-overlay" id="modal-historico">
+        <div class="modal" style="max-width:640px">
+            <div class="modal-header">
+                <h3>Histórico — <span id="historico-paciente-nome"></span></h3>
+                <button class="modal-close" onclick="closeModal('modal-historico')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="historico-timeline"></div>
+            </div>
+            <div class="modal-footer" style="padding:0">
+                <button class="btn btn-primary" id="btn-add-historico">+ Adicionar Registro</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Anamnese do Paciente -->
+    <div class="modal-overlay" id="modal-anamnese">
+        <div class="modal" style="max-width:720px">
+            <div class="modal-header">
+                <h3>Anamnese — <span id="anamnese-paciente-nome"></span></h3>
+                <button class="modal-close" onclick="closeModal('modal-anamnese')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="anamnese-form">
+                    <input type="hidden" id="anamnese-paciente-id">
+
+                    <div class="anamnese-section">
+                        <h4 class="anamnese-section-title">Dados Gerais</h4>
+                        <div class="form-row-3">
+                            <div class="form-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" id="anamnese-peso" step="0.1" placeholder="Ex: 70.5">
+                            </div>
+                            <div class="form-group">
+                                <label>Altura (cm)</label>
+                                <input type="number" id="anamnese-altura" step="0.1" placeholder="Ex: 165">
+                            </div>
+                            <div class="form-group">
+                                <label>Atividade Física Atual</label>
+                                <select id="anamnese-atividade">
+                                    <option value="">Selecione</option>
+                                    <option value="nenhuma">Nenhuma</option>
+                                    <option value="sedentario">Sedentário</option>
+                                    <option value="leve">Leve (caminhada, yoga)</option>
+                                    <option value="moderada">Moderada (pilates, natação)</option>
+                                    <option value="intensa">Intensa (musculação, CrossFit)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="anamnese-section">
+                        <h4 class="anamnese-section-title">Histórico de Saúde</h4>
+                        <div class="form-group">
+                            <label>Condições Médicas / Doenças</label>
+                            <textarea id="anamnese-doencas" placeholder="Ex: hipertensão, diabetes, asma, artrite..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Cirurgias Anteriores</label>
+                            <textarea id="anamnese-cirurgias" placeholder="Ex: artroscopia joelho (2020), cesárea (2018)..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Medicamentos em Uso</label>
+                            <textarea id="anamnese-medicamentos" placeholder="Ex: losartana 50mg, ibuprofeno sob demanda..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Alergias</label>
+                            <input type="text" id="anamnese-alergias" placeholder="Ex: dipirona, látex, maracujá...">
+                        </div>
+                    </div>
+
+                    <div class="anamnese-section">
+                        <h4 class="anamnese-section-title">Histórico de Atividade Física</h4>
+                        <div class="form-group">
+                            <label>Práticas Anteriores (Pilates / Fisioterapia)</label>
+                            <textarea id="anamnese-praticas" placeholder="Ex: 6 meses de pilates em 2023, fisioterapia para coluna em 2022..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Objetivos com o Tratamento</label>
+                            <textarea id="anamnese-objetivos" placeholder="Ex: alívio de dor lombar, melhoria da postura, fortalecimento muscular..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Limitações / Restrições</label>
+                            <textarea id="anamnese-limitacoes" placeholder="Ex: não pode fazer flexão de coluna, joelho com restrição..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="anamnese-section">
+                        <h4 class="anamnese-section-title">Avaliação Postural</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Postura</label>
+                                <select id="anamnese-postura">
+                                    <option value="">Selecione</option>
+                                    <option value="normal">Normal (neutra)</option>
+                                    <option value="lordose">Lordose acentuada</option>
+                                    <option value="cifose">Cifose acentuada</option>
+                                    <option value="escoliose">Escoliose</option>
+                                    <option value="desvio-lateral">Desvio lateral da coluna</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Observações Posturais</label>
+                                <input type="text" id="anamnese-postura-obs" placeholder="Ex: ombro esquerdo mais alto, cabeça anteriorizada...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="anamnese-section">
+                        <h4 class="anamnese-section-title">Avaliação Física</h4>
+                        <div class="form-group">
+                            <label>Dor (0-10) e Localização</label>
+                            <div class="form-row">
+                                <input type="number" id="anamnese-dor-intensidade" min="0" max="10" placeholder="0-10" style="width:80px">
+                                <input type="text" id="anamnese-dor-local" placeholder="Ex: lombar baixa, cervical, joelho direito...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Amplitude de Movimento</label>
+                            <select id="anamnese-amplitude">
+                                <option value="">Selecione</option>
+                                <option value="normal">Normal</option>
+                                <option value="reduzida">Reduzida</option>
+                                <option value="muito-reduzida">Muito reduzida</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Força Muscular (observação)</label>
+                            <textarea id="anamnese-forca" placeholder="Ex: fraqueza em extensores de joelho, glúteos fracos..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Outras Observações</label>
+                            <textarea id="anamnese-obs-gerais" placeholder="Anotações adicionais do profissional..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer" style="padding:0">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-anamnese')">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Salvar Anamnese</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Pagamento -->
+    <div class="modal-overlay" id="modal-pagamento">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Novo Lançamento</h3>
+                <button class="modal-close" onclick="closeModal('modal-pagamento')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="pagamento-form">
+                    <input type="hidden" id="pagamento-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tipo *</label>
+                            <select id="pagamento-tipo" required>
+                                <option value="receita">Receita</option>
+                                <option value="despesa">Despesa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição *</label>
+                            <input type="text" id="pagamento-desc" required placeholder="Descrição">
+                        </div>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>Categoria</label>
+                            <select id="pagamento-categoria">
+                                <option value="">Selecione</option>
+                                <option value="mensalidade">Mensalidade</option>
+                                <option value="avulsa">Sessão Avulsa</option>
+                                <option value="fisioterapia">Fisioterapia</option>
+                                <option value="aluguel">Aluguel</option>
+                                <option value="equipamento">Equipamento</option>
+                                <option value="funcionario">Funcionário</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor (R$) *</label>
+                            <input type="number" id="pagamento-valor" step="0.01" required placeholder="0,00">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="pagamento-status">
+                                <option value="pendente">Pendente</option>
+                                <option value="pago">Pago</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Data</label>
+                            <input type="date" id="pagamento-data">
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Vencimento</label>
+                            <input type="date" id="pagamento-vencimento">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Notas</label>
+                        <textarea id="pagamento-notas" placeholder="Observações..."></textarea>
+                    </div>
+                    <div class="modal-footer" style="padding:0">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-pagamento')">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: NF-e -->
+    <div class="modal-overlay" id="modal-nota">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Emitir NF-e</h3>
+                <button class="modal-close" onclick="closeModal('modal-nota')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="nota-form">
+                    <input type="hidden" id="nota-id">
+                    <div style="background:var(--color-gray-100);padding:12px 16px;border-radius:var(--radius-md);margin-bottom:16px;font-size:13px">
+                        Número da nota: <strong id="nota-numero-gerado">000001</strong> | Série: 1 | Emissão: <strong id="nota-data-emissao"></strong>
+                    </div>
+                    <div class="form-group">
+                        <label>Paciente/Cliente *</label>
+                        <select id="nota-cliente" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição do Serviço *</label>
+                        <input type="text" id="nota-desc" required placeholder="Ex: Sessão de Pilates, Fisioterapia...">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Valor Total (R$) *</label>
+                            <input type="number" id="nota-valor" step="0.01" required placeholder="0,00">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Notas Adicionais</label>
+                        <textarea id="nota-notas" placeholder="Observações..."></textarea>
+                    </div>
+                    <div class="modal-footer" style="padding:0">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-nota')">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Criar Nota</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: NF-e Detalhe -->
+    <div class="modal-overlay" id="modal-nota-detalhe">
+        <div class="modal" style="max-width:640px">
+            <div class="modal-header">
+                <h3>Detalhes da NF-e</h3>
+                <button class="modal-close" onclick="closeModal('modal-nota-detalhe')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:14px">
+                    <div><strong>Número:</strong> <span id="nota-det-numero"></span></div>
+                    <div><strong>Série:</strong> <span id="nota-det-serie"></span></div>
+                    <div><strong>Emissão:</strong> <span id="nota-det-emissao"></span></div>
+                    <div><strong>Status:</strong> <span id="nota-det-status"></span></div>
+                    <div><strong>Cliente:</strong> <span id="nota-det-cliente"></span></div>
+                    <div><strong>CPF:</strong> <span id="nota-det-cpf"></span></div>
+                    <div style="grid-column:1/3"><strong>Serviço:</strong> <span id="nota-det-desc"></span></div>
+                    <div><strong>Valor:</strong> <span id="nota-det-valor"></span></div>
+                    <div><strong>Chave Acesso:</strong> <span id="nota-det-chave" style="font-size:11px;word-break:break-all"></span></div>
+                    <div><strong>Protocolo:</strong> <span id="nota-det-protocolo"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Agendamento -->
+    <div class="modal-overlay" id="modal-agendamento">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Novo Agendamento</h3>
+                <button class="modal-close" onclick="closeModal('modal-agendamento')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="agendamento-form">
+                    <input type="hidden" id="agendamento-id">
+                    <div class="form-group">
+                        <label>Paciente *</label>
+                        <select id="agendamento-paciente" required></select>
+                    </div>
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label>Data *</label>
+                            <input type="date" id="agendamento-data" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Hora *</label>
+                            <select id="agendamento-hora" required>
+                                <option value="07:00">07:00</option><option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option><option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option><option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option><option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option><option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option><option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo</label>
+                            <select id="agendamento-tipo">
+                                <option value="pilates">Pilates</option>
+                                <option value="fisioterapia">Fisioterapia</option>
+                                <option value="avaliacao">Avaliação</option>
+                                <option value="reabilitacao">Reabilitação</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="agendamento-status">
+                            <option value="agendado">Agendado</option>
+                            <option value="confirmado">Confirmado</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Observações</label>
+                        <textarea id="agendamento-obs" placeholder="Notas sobre o agendamento..."></textarea>
+                    </div>
+                    <div class="modal-footer" style="padding:0">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-agendamento')">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Agendamento Detalhe -->
+    <div class="modal-overlay" id="modal-agendamento-detalhe">
+        <div class="modal" style="max-width:480px">
+            <div class="modal-header">
+                <h3>Detalhes do Agendamento</h3>
+                <button class="modal-close" onclick="closeModal('modal-agendamento-detalhe')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:14px;margin-bottom:16px">
+                    <div><strong>Paciente:</strong> <span id="ag-det-paciente"></span></div>
+                    <div><strong>Status:</strong> <span id="ag-det-status"></span></div>
+                    <div><strong>Data:</strong> <span id="ag-det-data"></span></div>
+                    <div><strong>Hora:</strong> <span id="ag-det-hora"></span></div>
+                    <div><strong>Tipo:</strong> <span id="ag-det-tipo"></span></div>
+                    <div style="grid-column:1/3"><strong>Obs:</strong> <span id="ag-det-obs"></span></div>
+                </div>
+                <div style="display:flex;gap:8px">
+                    <button class="btn btn-primary" id="btn-ag-confirmar">Confirmar</button>
+                    <button class="btn btn-danger" id="btn-ag-cancelar">Cancelar Agendamento</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Usuário -->
+    <div class="modal-overlay" id="modal-usuario">
+        <div class="modal" style="max-width:480px">
+            <div class="modal-header">
+                <h3>Novo Usuário</h3>
+                <button class="modal-close" onclick="closeModal('modal-usuario')">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="usuario-form">
+                    <input type="hidden" id="usuario-id">
+                    <div class="form-group">
+                        <label>Nome *</label>
+                        <input type="text" id="usuario-nome" required placeholder="Nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail *</label>
+                        <input type="email" id="usuario-email" required placeholder="usuario@email.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Senha</label>
+                            <input type="password" id="usuario-senha" placeholder="Senha">
+                        </div>
+                        <div class="form-group">
+                            <label>Cargo</label>
+                            <select id="usuario-cargo">
+                                <option value="operador">Operador</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="usuario-ativo">
+                            <option value="true">Ativo</option>
+                            <option value="false">Inativo</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer" style="padding:0">
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-usuario')">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Vite Entry Point -->
+</body>
+</html>
